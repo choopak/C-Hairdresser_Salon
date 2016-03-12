@@ -1,21 +1,57 @@
-﻿
+﻿@model IEnumerable<Hairdresser_Salon.ZakladyFryzjerskie>
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Zakłady</h2>
+<h2>Zakłady Fryzjerskie</h2>
 
-<form>
-    Nazwa:<br>
-    <input type="text" name="nazwa"><br><br>
-    Miasto:<br>
-    <input type="text" name="miasto"><br><br>
-    Adres:<br>
-    <input type="text" name="adres"><br><br>
-    E-mail:<br>
-    <input type="text" name="email"><br><br>
-    Nr Telefonu:<br>
-    <input type="text" name="nrtelefonu"><br>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Miasto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ulica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrTel)
+        </th>
+        <th></th>
+    </tr>
 
-</form> 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Miasto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ulica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NrTel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDZakladu }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDZakladu }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDZakladu })
+        </td>
+    </tr>
+}
 
+</table>

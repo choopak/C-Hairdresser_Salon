@@ -187,3 +187,7 @@ F:\ProjektDoKapusty\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.dl
 F:\ProjektDoKapusty\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.SqlServer.dll
 F:\ProjektDoKapusty\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.xml
 F:\ProjektDoKapusty\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.SqlServer.xml
+D:\salon\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.dll
+D:\salon\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.SqlServer.dll
+D:\salon\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.xml
+D:\salon\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.SqlServer.xml

@@ -214,8 +214,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Zaklady\Index.cshtml" />
     <Content Include="Views\Uzytkownicy\Index.cshtml" />
+    <Content Include="Views\Zaklady\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

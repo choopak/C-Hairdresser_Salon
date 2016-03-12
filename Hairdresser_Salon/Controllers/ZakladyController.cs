@@ -8,10 +8,15 @@ namespace Hairdresser_Salon.Controllers
 {
     public class ZakladyController : Controller
     {
+        projekt_salonuEntities Baza = new projekt_salonuEntities();
+
         // GET: Zaklady
         public ActionResult Index()
         {
-            return View();
+            return View(Baza.ZakladyFryzjerskie.ToList());
         }
+
+        
+
     }
 }
