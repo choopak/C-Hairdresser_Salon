@@ -9,14 +9,13 @@ namespace Hairdresser_Salon.Controllers
 {
     public class UzytkownicyController : Controller
     {
-        Uzytkownicy _uzytkownicy;
+
+        projekt_salonuEntities Baza = new projekt_salonuEntities();
 
         // GET: Uzytkownicy
         public ActionResult Index()
         {
-            this._uzytkownicy = new Uzytkownicy(1);
-            
-            return View();
+            return View(Baza.Uzytkownicy.ToList());
         }
     }
 }

@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="projekt_salonuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Rezerwacje">
+          <Key>
+            <PropertyRef Name="IDRezerwacji" />
+          </Key>
+          <Property Name="IDRezerwacji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDZakladu" Type="int" />
+          <Property Name="IDUslugi" Type="int" />
+          <Property Name="NumerRezerwacji" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataIGodzinaRezerwacji" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="IDUslugi" />
+          </Key>
+          <Property Name="IDUslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazwaUslugi" Type="varchar" MaxLength="50" />
+          <Property Name="TypUslugi" Type="varchar" MaxLength="50" />
+          <Property Name="CenaUslugi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="IDPackage" />
+          </Key>
+          <Property Name="IDPackage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="50" />
+          <Property Name="NrTel" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Plec" Type="varchar" MaxLength="50" />
+          <Property Name="IDRezerwacji" Type="int" />
+        </EntityType>
+        <EntityType Name="ZakladyFryzjerskie">
+          <Key>
+            <PropertyRef Name="IDZakladu" />
+          </Key>
+          <Property Name="IDZakladu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Miasto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ulica" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="NrTel" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Rezerwacj__IDUsl__3B75D760">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="IDUslugi" />
+            </Principal>
+            <Dependent Role="Rezerwacje">
+              <PropertyRef Name="IDUslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rezerwacj__IDZak__3A81B327">
+          <End Role="ZakladyFryzjerskie" Type="Self.ZakladyFryzjerskie" Multiplicity="0..1" />
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZakladyFryzjerskie">
+              <PropertyRef Name="IDZakladu" />
+            </Principal>
+            <Dependent Role="Rezerwacje">
+              <PropertyRef Name="IDZakladu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uzytkowni__IDRez__3E52440B">
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1" />
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezerwacje">
+              <PropertyRef Name="IDRezerwacji" />
+            </Principal>
+            <Dependent Role="Uzytkownicy">
+              <PropertyRef Name="IDRezerwacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projekt_salonuModelStoreContainer">
+          <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZakladyFryzjerskie" EntityType="Self.ZakladyFryzjerskie" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Rezerwacj__IDUsl__3B75D760" Association="Self.FK__Rezerwacj__IDUsl__3B75D760">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rezerwacj__IDZak__3A81B327" Association="Self.FK__Rezerwacj__IDZak__3A81B327">
+            <End Role="ZakladyFryzjerskie" EntitySet="ZakladyFryzjerskie" />
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uzytkowni__IDRez__3E52440B" Association="Self.FK__Uzytkowni__IDRez__3E52440B">
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="projekt_salonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Rezerwacje">
+          <Key>
+            <PropertyRef Name="IDRezerwacji" />
+          </Key>
+          <Property Name="IDRezerwacji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDZakladu" Type="Int32" />
+          <Property Name="IDUslugi" Type="Int32" />
+          <Property Name="NumerRezerwacji" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataIGodzinaRezerwacji" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK__Rezerwacj__IDUsl__3B75D760" FromRole="Rezerwacje" ToRole="Uslugi" />
+          <NavigationProperty Name="ZakladyFryzjerskie" Relationship="Self.FK__Rezerwacj__IDZak__3A81B327" FromRole="Rezerwacje" ToRole="ZakladyFryzjerskie" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK__Uzytkowni__IDRez__3E52440B" FromRole="Rezerwacje" ToRole="Uzytkownicy" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="IDUslugi" />
+          </Key>
+          <Property Name="IDUslugi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaUslugi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypUslugi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CenaUslugi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__IDUsl__3B75D760" FromRole="Uslugi" ToRole="Rezerwacje" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="IDPackage" />
+          </Key>
+          <Property Name="IDPackage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NrTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Plec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDRezerwacji" Type="Int32" />
+          <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Uzytkowni__IDRez__3E52440B" FromRole="Uzytkownicy" ToRole="Rezerwacje" />
+        </EntityType>
+        <EntityType Name="ZakladyFryzjerskie">
+          <Key>
+            <PropertyRef Name="IDZakladu" />
+          </Key>
+          <Property Name="IDZakladu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NrTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__IDZak__3A81B327" FromRole="ZakladyFryzjerskie" ToRole="Rezerwacje" />
+        </EntityType>
+        <Association Name="FK__Rezerwacj__IDUsl__3B75D760">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="IDUslugi" />
+            </Principal>
+            <Dependent Role="Rezerwacje">
+              <PropertyRef Name="IDUslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rezerwacj__IDZak__3A81B327">
+          <End Role="ZakladyFryzjerskie" Type="Self.ZakladyFryzjerskie" Multiplicity="0..1" />
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZakladyFryzjerskie">
+              <PropertyRef Name="IDZakladu" />
+            </Principal>
+            <Dependent Role="Rezerwacje">
+              <PropertyRef Name="IDZakladu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uzytkowni__IDRez__3E52440B">
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1" />
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezerwacje">
+              <PropertyRef Name="IDRezerwacji" />
+            </Principal>
+            <Dependent Role="Uzytkownicy">
+              <PropertyRef Name="IDRezerwacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projekt_salonuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
+          <EntitySet Name="ZakladyFryzjerskie" EntityType="Self.ZakladyFryzjerskie" />
+          <AssociationSet Name="FK__Rezerwacj__IDUsl__3B75D760" Association="Self.FK__Rezerwacj__IDUsl__3B75D760">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rezerwacj__IDZak__3A81B327" Association="Self.FK__Rezerwacj__IDZak__3A81B327">
+            <End Role="ZakladyFryzjerskie" EntitySet="ZakladyFryzjerskie" />
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uzytkowni__IDRez__3E52440B" Association="Self.FK__Uzytkowni__IDRez__3E52440B">
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="projekt_salonuModelStoreContainer" CdmEntityContainer="projekt_salonuEntities">
+          <EntitySetMapping Name="Rezerwacje">
+            <EntityTypeMapping TypeName="projekt_salonuModel.Rezerwacje">
+              <MappingFragment StoreEntitySet="Rezerwacje">
+                <ScalarProperty Name="IDRezerwacji" ColumnName="IDRezerwacji" />
+                <ScalarProperty Name="IDZakladu" ColumnName="IDZakladu" />
+                <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+                <ScalarProperty Name="NumerRezerwacji" ColumnName="NumerRezerwacji" />
+                <ScalarProperty Name="DataIGodzinaRezerwacji" ColumnName="DataIGodzinaRezerwacji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uslugi">
+            <EntityTypeMapping TypeName="projekt_salonuModel.Uslugi">
+              <MappingFragment StoreEntitySet="Uslugi">
+                <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+                <ScalarProperty Name="NazwaUslugi" ColumnName="NazwaUslugi" />
+                <ScalarProperty Name="TypUslugi" ColumnName="TypUslugi" />
+                <ScalarProperty Name="CenaUslugi" ColumnName="CenaUslugi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzytkownicy">
+            <EntityTypeMapping TypeName="projekt_salonuModel.Uzytkownicy">
+              <MappingFragment StoreEntitySet="Uzytkownicy">
+                <ScalarProperty Name="IDPackage" ColumnName="IDPackage" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="NrTel" ColumnName="NrTel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Plec" ColumnName="Plec" />
+                <ScalarProperty Name="IDRezerwacji" ColumnName="IDRezerwacji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZakladyFryzjerskie">
+            <EntityTypeMapping TypeName="projekt_salonuModel.ZakladyFryzjerskie">
+              <MappingFragment StoreEntitySet="ZakladyFryzjerskie">
+                <ScalarProperty Name="IDZakladu" ColumnName="IDZakladu" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NrTel" ColumnName="NrTel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

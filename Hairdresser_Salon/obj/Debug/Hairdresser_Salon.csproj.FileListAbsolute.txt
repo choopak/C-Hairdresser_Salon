@@ -183,3 +183,7 @@ D:\salon\C-Hairdresser_Salon\Hairdresser_Salon\bin\System.Web.Mvc.xml
 D:\salon\C-Hairdresser_Salon\Hairdresser_Salon\obj\Debug\Hairdresser_Salon.csprojResolveAssemblyReference.cache
 D:\salon\C-Hairdresser_Salon\Hairdresser_Salon\obj\Debug\Hairdresser_Salon.dll
 D:\salon\C-Hairdresser_Salon\Hairdresser_Salon\obj\Debug\Hairdresser_Salon.pdb
+F:\ProjektDoKapusty\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.dll
+F:\ProjektDoKapusty\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.SqlServer.dll
+F:\ProjektDoKapusty\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.xml
+F:\ProjektDoKapusty\C-Hairdresser_Salon\Hairdresser_Salon\bin\EntityFramework.SqlServer.xml

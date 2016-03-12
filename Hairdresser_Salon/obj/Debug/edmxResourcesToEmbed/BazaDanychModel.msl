@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="projekt_salonuModelStoreContainer" CdmEntityContainer="projekt_salonuEntities">
+    <EntitySetMapping Name="Rezerwacje">
+      <EntityTypeMapping TypeName="projekt_salonuModel.Rezerwacje">
+        <MappingFragment StoreEntitySet="Rezerwacje">
+          <ScalarProperty Name="IDRezerwacji" ColumnName="IDRezerwacji" />
+          <ScalarProperty Name="IDZakladu" ColumnName="IDZakladu" />
+          <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+          <ScalarProperty Name="NumerRezerwacji" ColumnName="NumerRezerwacji" />
+          <ScalarProperty Name="DataIGodzinaRezerwacji" ColumnName="DataIGodzinaRezerwacji" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uslugi">
+      <EntityTypeMapping TypeName="projekt_salonuModel.Uslugi">
+        <MappingFragment StoreEntitySet="Uslugi">
+          <ScalarProperty Name="IDUslugi" ColumnName="IDUslugi" />
+          <ScalarProperty Name="NazwaUslugi" ColumnName="NazwaUslugi" />
+          <ScalarProperty Name="TypUslugi" ColumnName="TypUslugi" />
+          <ScalarProperty Name="CenaUslugi" ColumnName="CenaUslugi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uzytkownicy">
+      <EntityTypeMapping TypeName="projekt_salonuModel.Uzytkownicy">
+        <MappingFragment StoreEntitySet="Uzytkownicy">
+          <ScalarProperty Name="IDPackage" ColumnName="IDPackage" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="NrTel" ColumnName="NrTel" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Plec" ColumnName="Plec" />
+          <ScalarProperty Name="IDRezerwacji" ColumnName="IDRezerwacji" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZakladyFryzjerskie">
+      <EntityTypeMapping TypeName="projekt_salonuModel.ZakladyFryzjerskie">
+        <MappingFragment StoreEntitySet="ZakladyFryzjerskie">
+          <ScalarProperty Name="IDZakladu" ColumnName="IDZakladu" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+          <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="NrTel" ColumnName="NrTel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
