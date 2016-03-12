@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projekt_salonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Rezerwacje">
+    <Key>
+      <PropertyRef Name="IDRezerwacji" />
+    </Key>
+    <Property Name="IDRezerwacji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDZakladu" Type="Int32" />
+    <Property Name="IDUslugi" Type="Int32" />
+    <Property Name="NumerRezerwacji" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DataIGodzinaRezerwacji" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Uslugi" Relationship="Self.FK__Rezerwacj__IDUsl__3B75D760" FromRole="Rezerwacje" ToRole="Uslugi" />
+    <NavigationProperty Name="ZakladyFryzjerskie" Relationship="Self.FK__Rezerwacj__IDZak__3A81B327" FromRole="Rezerwacje" ToRole="ZakladyFryzjerskie" />
+    <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK__Uzytkowni__IDRez__3E52440B" FromRole="Rezerwacje" ToRole="Uzytkownicy" />
+  </EntityType>
+  <EntityType Name="Uslugi">
+    <Key>
+      <PropertyRef Name="IDUslugi" />
+    </Key>
+    <Property Name="IDUslugi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazwaUslugi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TypUslugi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CenaUslugi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__IDUsl__3B75D760" FromRole="Uslugi" ToRole="Rezerwacje" />
+  </EntityType>
+  <EntityType Name="Uzytkownicy">
+    <Key>
+      <PropertyRef Name="IDPackage" />
+    </Key>
+    <Property Name="IDPackage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NrTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Plec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDRezerwacji" Type="Int32" />
+    <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Uzytkowni__IDRez__3E52440B" FromRole="Uzytkownicy" ToRole="Rezerwacje" />
+  </EntityType>
+  <EntityType Name="ZakladyFryzjerskie">
+    <Key>
+      <PropertyRef Name="IDZakladu" />
+    </Key>
+    <Property Name="IDZakladu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NrTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rezerwacje" Relationship="Self.FK__Rezerwacj__IDZak__3A81B327" FromRole="ZakladyFryzjerskie" ToRole="Rezerwacje" />
+  </EntityType>
+  <Association Name="FK__Rezerwacj__IDUsl__3B75D760">
+    <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uslugi">
+        <PropertyRef Name="IDUslugi" />
+      </Principal>
+      <Dependent Role="Rezerwacje">
+        <PropertyRef Name="IDUslugi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__IDZak__3A81B327">
+    <End Role="ZakladyFryzjerskie" Type="Self.ZakladyFryzjerskie" Multiplicity="0..1" />
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ZakladyFryzjerskie">
+        <PropertyRef Name="IDZakladu" />
+      </Principal>
+      <Dependent Role="Rezerwacje">
+        <PropertyRef Name="IDZakladu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Uzytkowni__IDRez__3E52440B">
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1" />
+    <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezerwacje">
+        <PropertyRef Name="IDRezerwacji" />
+      </Principal>
+      <Dependent Role="Uzytkownicy">
+        <PropertyRef Name="IDRezerwacji" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="projekt_salonuEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" />
+    <EntitySet Name="Uslugi" EntityType="Self.Uslugi" />
+    <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
+    <EntitySet Name="ZakladyFryzjerskie" EntityType="Self.ZakladyFryzjerskie" />
+    <AssociationSet Name="FK__Rezerwacj__IDUsl__3B75D760" Association="Self.FK__Rezerwacj__IDUsl__3B75D760">
+      <End Role="Uslugi" EntitySet="Uslugi" />
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__IDZak__3A81B327" Association="Self.FK__Rezerwacj__IDZak__3A81B327">
+      <End Role="ZakladyFryzjerskie" EntitySet="ZakladyFryzjerskie" />
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Uzytkowni__IDRez__3E52440B" Association="Self.FK__Uzytkowni__IDRez__3E52440B">
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+      <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -21,8 +21,9 @@ namespace Hairdresser_Salon.Models
         public string Plec { get; set; }
         public int IDRezerwacji { get; set; }
 
-        #endregion
 
+        #endregion
+        /*
         private bool connection_open;
         private MySqlConnection connection;
 
@@ -94,6 +95,7 @@ namespace Hairdresser_Salon.Models
         }
 
         #endregion
+    
+    */
     }
-
 }
